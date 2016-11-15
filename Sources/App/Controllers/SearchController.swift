@@ -4,7 +4,7 @@ import Vapor
 
 public final class SearchController {
     
-    public static func search(request: Request) throws -> ResponseRepresentable {
+    public func search(request: Request) throws -> ResponseRepresentable {
         guard let term = request.query?["term"]?.string else {
             return Response(status: .badRequest)
         }
