@@ -1,7 +1,15 @@
+import Vapor
+
 class SearchService {
     
-    static func search(searchTerm: String) -> SearchResults {
-        let towns = TownsService.all()
+    let townsService: TownsService
+    
+    init(app: Droplet) {
+        self.townsService = TownsService(app: app)
+    }
+    
+    func search(searchTerm: String) throws -> SearchResults {
+        let towns = try self.townsService.all()
         let results = towns.filter { (town: Town) -> Bool in
             let lowerCaseSearchTerm = searchTerm.lowercased()
             

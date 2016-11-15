@@ -2,13 +2,14 @@ import Vapor
 
 let drop = Droplet()
 
-let townsController = TownsController()
-let searchController = SearchController()
+let townsController = TownsController(app: drop)
+let searchController = SearchController(app: drop)
 
 drop.get { _ in
     return "Hello World"
 }
 
+drop.post("/towns/create", handler: townsController.create)
 drop.get("/towns", String.self, handler: townsController.single)
 drop.get("/towns", handler: townsController.all)
 

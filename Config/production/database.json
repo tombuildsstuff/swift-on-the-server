@@ -1,0 +1,6 @@
+{
+    "host": "mysql-cluster.myinternaldomain.com",
+    "username": "vapordemouser",
+    "password": "more-secure-yeah",
+    "database": "vapordemo"
+}
